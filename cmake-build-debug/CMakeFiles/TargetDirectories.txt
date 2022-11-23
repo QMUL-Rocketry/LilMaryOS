@@ -1,0 +1,3 @@
+/Users/heshamburawi/CLionProjects/rocket-os/cmake-build-debug/CMakeFiles/rocket_os.dir
+/Users/heshamburawi/CLionProjects/rocket-os/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/heshamburawi/CLionProjects/rocket-os/cmake-build-debug/CMakeFiles/rebuild_cache.dir
