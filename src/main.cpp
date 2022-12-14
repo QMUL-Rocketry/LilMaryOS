@@ -5,7 +5,7 @@
 #include "test.h"
 
 enum blinks {
-  PROGRAM_MODE = 1000,
+  PROGRAM_MODE = 300,
   DEPLOYMENT = 500
 };
 
@@ -16,6 +16,8 @@ blinks b;
 void setup() {
   // put your setup code here, to run once:
   pinMode(led, OUTPUT);
+  Serial.begin(9600);
+  delay(2000);
 }
 
 void loop() {
@@ -26,4 +28,6 @@ void loop() {
   delay(b);
   digitalWrite(led, LOW);
   delay(b);
+  Serial.println("Hello world!");
+  delay(3000);
 }
