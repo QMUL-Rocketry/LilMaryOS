@@ -1,9 +1,8 @@
 #include "imu.h"
 
-IMU::IMU(int32_t id, uint8_t add, TwoWire *wire){
+IMU::IMU(int32_t id, uint8_t add){
+    bno = Adafruit_BNO055(id, add, &Wire);
     sensor_t st;
-    sensors_event_t event;
-    bno.getEvent(&event);
     bno.getSensor(&st);
 };
 
