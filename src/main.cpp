@@ -2,12 +2,11 @@
 
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
-// #include "AudioFile.h"
 #include "test.h"
 
 enum blinks {
-  PROGRAM_MODE = 100,
-  DEPLOYMENT = 1000
+  PROGRAM_MODE = 1000,
+  DEPLOYMENT = 500
 };
 
 int led = 13;
@@ -20,13 +19,9 @@ void setup() {
 }
 
 void loop() {
-<<<<<<< Updated upstream
   // testing branch right now just for you guys
-=======
-  // Controller();
->>>>>>> Stashed changes
   // put your main code here, to run repeatedly:
-  b = DEPLOYMENT;
+  b = PROGRAM_MODE;
   digitalWrite(led, HIGH);
   delay(b);
   digitalWrite(led, LOW);
