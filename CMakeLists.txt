@@ -8,4 +8,4 @@ include_directories(functions)
 add_executable(rocket_os
         functions/test.cpp
         functions/test.h
-        src/main.cpp)
+        src/main.cpp src/Sensors/imu.cpp)

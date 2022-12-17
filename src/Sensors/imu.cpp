@@ -46,3 +46,36 @@ sensors_event_t IMU::getSensorEvent() {
     bno.getEvent(&event);
     return event;
 }
+
+/**************************************************************************/
+/*
+    Display sensor calibration status
+*/
+/**************************************************************************/
+void IMU::displayCalStatus()
+{
+  /* Get the four calibration values (0..3) */
+  /* Any sensor data reporting 0 should be ignored, */
+  /* 3 means 'fully calibrated" */
+  uint8_t system, gyro, accel, mag;
+  system = gyro = accel = mag = 0;
+  bno.getCalibration(&system, &gyro, &accel, &mag);
+
+  /* The data should be ignored until the system calibration is > 0 */
+  Serial.print("\t");
+  if (!system)
+  {
+    Serial.print("! ");
+  }
+
+  /* Display the individual values */
+  Serial.print("Sys (3 means calibrated):");
+  Serial.print(system, DEC);
+  Serial.print(" Gyro:");
+  Serial.print(gyro, DEC);
+  Serial.print(" Accel:");
+  Serial.print(accel, DEC);
+  Serial.print(" Mag:");
+  Serial.print(mag, DEC);
+}
+

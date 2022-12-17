@@ -5,6 +5,7 @@
 #ifndef IMU_H
 #define IMU_H
 
+// 100ms delay
 #define BNO055_SAMPLERATE_DELAY_MS (100)
 
 #include <Adafruit_Sensor.h>
@@ -22,6 +23,7 @@ class IMU: public Sensor {
         void printSensorInformation();
         void refreshSensorInformation();
         void printSensorStatus();
+        void displayCalStatus();
         sensors_event_t getSensorEvent();
     private:
         sensor_t sensor;
@@ -30,6 +32,4 @@ class IMU: public Sensor {
 
 
 
-
-
-#endif IMU_H
+#endif
