@@ -1,3 +1,0 @@
-C:/Users/taaha/Documents/GitHub/rocket-os/cmake-build-debug/CMakeFiles/rocket_os.dir
-C:/Users/taaha/Documents/GitHub/rocket-os/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/taaha/Documents/GitHub/rocket-os/cmake-build-debug/CMakeFiles/rebuild_cache.dir

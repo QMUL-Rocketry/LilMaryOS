@@ -10,7 +10,7 @@
 
 class Sensor {
     public:
-        virtual sensor_t getSensorInformation() = 0;
+        // virtual sensor_t getSensorInformation() = 0;
         virtual sensors_event_t getSensorEvent() = 0;
     protected:
         sensor_t sensor;

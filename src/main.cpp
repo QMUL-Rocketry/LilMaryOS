@@ -1,7 +1,5 @@
 #include <Arduino.h>
-
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
+#include "State.h"
 #include "test.h"
 
 enum blinks {
@@ -12,12 +10,15 @@ enum blinks {
 int led = 13;
 
 blinks b;
+State s;
+IMU* i = NULL;
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(led, OUTPUT);
   Serial.begin(9600);
   delay(2000);
+  i = s.getIMU();
 }
 
 void loop() {
@@ -29,6 +30,6 @@ void loop() {
   delay(b);
   digitalWrite(led, LOW);
   delay(b);
-  Serial.println("Hello world!");
-  delay(3000);
+  i->readAllData(true);
+  delay(1000);
 }
