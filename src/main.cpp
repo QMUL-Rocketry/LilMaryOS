@@ -22,7 +22,7 @@ void setup() {
 }
 
 void loop() {
-  
+  // edit
   // testing branch right now just for you guys
   // put your main code here, to run repeatedly:
   b = PROGRAM_MODE;
@@ -32,4 +32,5 @@ void loop() {
   delay(b);
   i->readAllData(true);
   delay(1000);
+  
 }
