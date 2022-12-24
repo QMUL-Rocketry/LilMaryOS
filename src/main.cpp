@@ -12,6 +12,7 @@ int led = 13;
 blinks b;
 State s;
 IMU* i = NULL;
+Altimeter* a = NULL;
 
 void setup() {
   // put your setup code here, to run once:
@@ -19,6 +20,7 @@ void setup() {
   Serial.begin(9600);
   delay(2000);
   i = s.getIMU();
+  a = s.getAlt();
 }
 
 void loop() {
@@ -30,7 +32,8 @@ void loop() {
   delay(b);
   digitalWrite(led, LOW);
   delay(b);
-  i->readAllData(true);
+  // i->readAllData(true);
+  // a->readAllData();
   delay(1000);
   
 }
