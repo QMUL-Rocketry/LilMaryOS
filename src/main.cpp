@@ -13,6 +13,7 @@ blinks b;
 State s;
 IMU* i = NULL;
 Altimeter* a = NULL;
+Telemetry* t = NULL;
 
 void setup() {
   // put your setup code here, to run once:
@@ -21,6 +22,7 @@ void setup() {
   delay(2000);
   i = s.getIMU();
   a = s.getAlt();
+  t = s.getTrans();
 }
 
 void loop() {
@@ -32,8 +34,9 @@ void loop() {
   delay(b);
   digitalWrite(led, LOW);
   delay(b);
-  // i->readAllData(true);
-  // a->readAllData();
+  i->readAllData(true);
+  a->readAllData();
+  t->transmit(10.0);
   delay(1000);
   
 }
