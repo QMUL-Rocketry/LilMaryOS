@@ -1,21 +1,24 @@
 #include "State.h"
 
 State::State(){
-    imu = IMU(55);
-    alt = Altimeter();
-    trans = Telemetry(868E6);
+    imu = new IMU(55);
+    Serial.println("IMU passed here");
+    // delay(5000);
+    // alt = Altimeter();
+    Serial.println("Alitmeter ran here");
+    // trans = Telemetry(868E6);
 };
 
 State::~State() {}
 
 IMU* State::getIMU() {
-    return &imu;
+    return imu;
 }
 
 Altimeter* State::getAlt() {
-    return &alt;
+    return alt;
 }
 
-Telemetry* State::getTrans() {
-    return &trans;
-}
+// Telemetry* State::getTrans() {
+//     return &trans;
+// }

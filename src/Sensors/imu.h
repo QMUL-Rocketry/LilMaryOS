@@ -25,6 +25,7 @@ class IMU {
         void refreshSensorInformation();
         void printSensorStatus();
         void displayCalStatus();
+        void printTest();
         sensors_event_t getSensorEvent();
         Adafruit_BNO055* exposeIMU();
 
