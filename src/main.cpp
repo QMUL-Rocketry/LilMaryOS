@@ -27,6 +27,8 @@ void setup()
   // Set to high for GPS
   Serial.begin(BAUD_HIGH);
 
+  delay(5000);
+
   i = s.getIMU();
   g = s.getGPS();
 
@@ -34,14 +36,14 @@ void setup()
 
 void loop()
 {
-  blinkingLed(b);
+  // blinkingLed(b);
   
   i->readAllData(true);
+  // delay(500);
+
+  // CHANGE DELAY FOR GPS READ
+  // NOTE DELAY FOR OTHER TIME SENSITIVE CODE E.G. BLINKS
   g->viewRead();
-
-  delay(100);
-
-  // i2cScanner();
 
 }
 
@@ -52,3 +54,4 @@ void blinkingLed(blinks x) {
   digitalWrite(DEFAULT_LED, LOW);
   delay(x);
 }
+
