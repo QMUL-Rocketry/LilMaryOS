@@ -31,6 +31,7 @@ inline void checkGPSConn() {}
 
 // Scans all address on i2c
 inline void i2cScanner() {
+    Wire.begin();
     byte error, address;
     int nDevices;
     Serial.println("Scanning...");

@@ -1,13 +1,7 @@
 #include "altimeter.h"
 
 Altimeter::Altimeter(){
-    // bmp = Adafruit_BMP280(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
-    // bmp = Adafruit_BMP280(BMP_CS);
-    bmp = Adafruit_BMP280();
-    if(!bmp.begin()){
-        Serial.println("BMP Not working");
-        // while(1);
-    };
+    bmp.begin();
 }
 
 Altimeter::~Altimeter(){};
@@ -39,5 +33,6 @@ void Altimeter::readAllData(){
     Serial.println(" m");
 
     Serial.println();
+    // DELAYYYYY FIXXXX
     delay(2000);
 }

@@ -17,7 +17,7 @@ class Altimeter {
         Altimeter();
         ~Altimeter();
     private:
-        Adafruit_BMP280 bmp;
+        Adafruit_BMP280 bmp = Adafruit_BMP280(&Wire1);
 };
 
 #endif
