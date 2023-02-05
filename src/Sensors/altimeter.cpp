@@ -3,10 +3,10 @@
 Altimeter::Altimeter(){
     // bmp = Adafruit_BMP280(BMP_CS, BMP_MOSI, BMP_MISO, BMP_SCK);
     // bmp = Adafruit_BMP280(BMP_CS);
-    // bmp = Adafruit_BMP280();
+    bmp = Adafruit_BMP280();
     if(!bmp.begin()){
         Serial.println("BMP Not working");
-        while(1);
+        // while(1);
     };
 }
 

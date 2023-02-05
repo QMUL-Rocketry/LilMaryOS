@@ -17,7 +17,7 @@
 class IMU {
 
     public:
-        // sensorID – sensor ID, address – i2c address, theWire – Wire object
+        // sensorID – sensor ID, address – i2c address, theWire – Wire object i2c
         IMU(int32_t id, uint8_t add);
         IMU(int32_t id);
         IMU();

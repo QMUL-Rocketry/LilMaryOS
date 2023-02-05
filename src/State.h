@@ -2,7 +2,8 @@
 #define STATE
 
 #include <Sensors/imu.h>
-#include <Sensors/altimeter.h>
+#include <Sensors/gps.h>
+// #include <Sensors/altimeter.h>
 // #include <Sensors/telemetry.h>
 
 class State {
@@ -10,11 +11,13 @@ class State {
         State();
         ~State();
         IMU* getIMU();
-        Altimeter* getAlt();
+        GPS* getGPS();
+        // Altimeter* getAlt();
         // Telemetry* getTrans();
     private:
         IMU* imu = NULL;
-        Altimeter* alt = NULL;
+        GPS* gps = NULL;
+        // Altimeter* alt = NULL;
         // Telemetry trans;
 };
 

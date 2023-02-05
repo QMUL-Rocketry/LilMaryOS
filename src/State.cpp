@@ -1,11 +1,9 @@
 #include "State.h"
 
 State::State(){
-    imu = new IMU(55);
-    Serial.println("IMU passed here");
-    // delay(5000);
-    // alt = Altimeter();
-    Serial.println("Alitmeter ran here");
+    imu = new IMU();
+    gps = new GPS();
+    // alt = new Altimeter();
     // trans = Telemetry(868E6);
 };
 
@@ -15,9 +13,13 @@ IMU* State::getIMU() {
     return imu;
 }
 
-Altimeter* State::getAlt() {
-    return alt;
+GPS* State::getGPS() {
+    return gps;
 }
+
+// Altimeter* State::getAlt() {
+//     return alt;
+// }
 
 // Telemetry* State::getTrans() {
 //     return &trans;

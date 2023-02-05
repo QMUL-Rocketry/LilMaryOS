@@ -2,11 +2,6 @@
 
 void printEvent(sensors_event_t* event);
 
-// IMU::IMU(int32_t id, uint8_t add){
-//     bno = Adafruit_BNO055(id, add, &Wire);
-//     bno.getSensor(&sensor);
-// };
-
 IMU::IMU(int32_t id){
     bno = Adafruit_BNO055(id);
     bno.getSensor(&sensor);
