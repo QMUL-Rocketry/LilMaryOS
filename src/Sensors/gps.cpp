@@ -6,7 +6,7 @@ GPS::GPS(){
 
 GPS::GPS(int RX, int TX){
     ss = SoftwareSerial(RX, TX);
-    GPS();    
+    GPS();   
 };
 
 GPS::~GPS(){};

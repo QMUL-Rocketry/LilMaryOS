@@ -4,7 +4,7 @@
 #include <Wire.h>
 #include <SPI.h>
 
-void checkBMPConn() {
+inline void checkBMPConn() {
     Wire.beginTransmission(0x76);
     byte status = Wire.endTransmission();
     if(status != 0) {
@@ -27,10 +27,10 @@ void checkBMPConn() {
 
 // NOT IMPLEMENTED
 // GPIO CONNECTION, RX 0 TX 1 PINS
-void checkGPSConn() {}
+inline void checkGPSConn() {}
 
 // Scans all address on i2c
-void i2cScanner() {
+inline void i2cScanner() {
     byte error, address;
     int nDevices;
     Serial.println("Scanning...");

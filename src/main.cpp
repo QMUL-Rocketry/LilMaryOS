@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <globals.h>
 #include "State.h"
-// #include "Tester/comp_check.cpp"
+#include "Tester/comp_check.cpp"
 #include <Wire.h>
 #include <SPI.h>
 
@@ -9,6 +9,8 @@ enum blinks {
   PROGRAM_MODE = 1000,
   DEPLOYMENT = 500
 };
+
+void blinkingLed(blinks x);
 
 blinks b = PROGRAM_MODE;
 
@@ -32,17 +34,21 @@ void setup()
 
 void loop()
 {
+  blinkingLed(b);
   
-  // Blinking LED
-  digitalWrite(DEFAULT_LED, HIGH);
-  delay(b);
-  digitalWrite(DEFAULT_LED, LOW);
-  delay(b);
-
   i->readAllData(true);
   g->viewRead();
 
-  delay(5000);
+  delay(100);
 
+  // i2cScanner();
 
+}
+
+// Blinking LED
+void blinkingLed(blinks x) {
+  digitalWrite(DEFAULT_LED, HIGH);
+  delay(x);
+  digitalWrite(DEFAULT_LED, LOW);
+  delay(x);
 }
