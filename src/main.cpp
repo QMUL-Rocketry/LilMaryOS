@@ -33,6 +33,7 @@ void setup()
   Serial.begin(BAUD_HIGH);
 
   delay(5000);
+  // delay(1000);
 
   i = s.getIMU();
   g = s.getGPS();
@@ -45,8 +46,8 @@ void loop()
   // blinkingLed(b);
   
   // BNO / IMU
-  i->readAllData(true);
-  // delay(500);
+  // i->readAllData(true);
+  delay(500);
 
   // GPS
   // CHANGE DELAY FOR GPS READ
@@ -56,7 +57,8 @@ void loop()
 
   // BMP / Altimeter
   a->readAllData();
-
+  
+  // i2cScanner();
 }
 
 // Blinking LED
