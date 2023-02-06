@@ -46,8 +46,8 @@ void loop()
   // blinkingLed(b);
   
   // BNO / IMU
-  // i->readAllData(true);
-  delay(500);
+  i->readAllData(true);
+  // delay(500);
 
   // GPS
   // CHANGE DELAY FOR GPS READ
