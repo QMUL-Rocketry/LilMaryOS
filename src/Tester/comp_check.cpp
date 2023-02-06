@@ -14,18 +14,16 @@ inline void checkBMPConn() {
     Serial.print("FOUND BMP");
 }
 
-// THIS DOESNT WORK
-// void checkBNOConn() {
-//     Wire.beginTransmission(0x28);
-//     byte status = Wire.endTransmission();
-//     if(status != 0) {
-//         Serial.print("BNO Not found at this address");
-//         while(1);
-//     }
-//     Serial.print("FOUND BNO");
-// }
+inline void checkBNOConn() {
+    Wire1.beginTransmission(0x77);
+    byte status = Wire1.endTransmission();
+    if(status != 0) {
+        Serial.print("BNO Not found at this address");
+        while(1);
+    }
+    Serial.print("FOUND BNO");
+}
 
-// NOT IMPLEMENTED
 // GPIO CONNECTION, RX 0 TX 1 PINS
 inline void checkGPSConn() {}
 
