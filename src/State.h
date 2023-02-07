@@ -6,6 +6,8 @@
 #include <Sensors/altimeter.h>
 // #include <Sensors/telemetry.h>
 
+#include <Apogee/apogee.h>
+
 class State {
     public:
         State();
@@ -23,11 +25,14 @@ class State {
         Altimeter* getAlt();
         // Telemetry* getTrans();
     private:
+        // WE DO NOT NEED POINTER VAIRABLES
         // THESE SHOULD BE GLOBAL OR PART OF A CLASS THAT IS GLOBAL
         IMU* imu = NULL;
         GPS* gps = NULL;
         Altimeter* alt = NULL;
         // Telemetry trans;
+
+        Apgoee* aps;
 };
 
 

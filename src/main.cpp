@@ -10,9 +10,9 @@ enum blinks {
   DEPLOYMENT = 500
 };
 
-// GPS UART SoftwareSerial
+// GPS UART SoftwareSerial rx 0 tx 1
 // BMP280 i2c default &Wire
-// BNO055 i2c? &Wire1, scanner only pickups 0x28 which is for the bmp280. There is something not right
+// BNO055 i2c? &Wire1
 
 void blinkingLed(blinks x);
 
