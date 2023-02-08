@@ -1,7 +1,27 @@
 #include "StorageController.h"
 
 StorageController::StorageController(){
+    items = QueueStorage(30);
     SD.begin();
+}
+
+bool StorageController::push(StorageItem* item) {
+    
+    items.add(item);
+    
+    return true;
+};
+
+bool StorageController::pop() {
+    
+    items.pop();
+
+    return true;
+}
+
+
+bool StorageController::save(StorageItem* item) {
+    return true;
 }
 
 // #include <SD.h>
