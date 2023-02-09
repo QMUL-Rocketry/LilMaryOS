@@ -7,13 +7,14 @@ class QueueStorage {
 public:
     // don't need to define a default constructor, already done here
     QueueStorage(int starting = 30);
+    // make sure we delete dynamic object here!!!!!!!!
     ~QueueStorage();
 
     // Add to queue
     void add(StorageItem *item);
 
     // Remove oldest element and save
-    void pop();
+    StorageItem* pop();
 
     // Get size of queue
     int len();
@@ -21,13 +22,14 @@ public:
     // Flush everything from queue - save everything
     // void flush();
 
+    // NOT NULL SAFE, MUST NOT BE USED IN PROD
     // StorageItem* getItem(int i);
 
     // int actualLength();
 
 private:
     // init with dynamic array that contains pointers
-    StorageItem** arr;
+    StorageItem **arr;
     // resize if the queue gets to big
     void resize();
     // index to remove item

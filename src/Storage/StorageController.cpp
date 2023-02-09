@@ -12,15 +12,16 @@ bool StorageController::push(StorageItem* item) {
     return true;
 };
 
-bool StorageController::pop() {
-    
-    items.pop();
-
-    return true;
+// NULL SAFETY CHECKKKKKKKKKKK
+StorageItem* StorageController::pop() {
+    return items.pop();
 }
 
-
+// PERFORM NULL SAFETY CHECK
 bool StorageController::save(StorageItem* item) {
+    if (item == nullptr) {
+        return false;
+    }
     return true;
 }
 

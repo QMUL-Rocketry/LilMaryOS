@@ -5,7 +5,7 @@
 #include <Sensors/gps.h>
 #include <Sensors/altimeter.h>
 // #include <Sensors/telemetry.h>
-
+#include <Storage/StorageController.h>
 #include <Apogee/apogee.h>
 
 class State {
@@ -25,14 +25,18 @@ class State {
         Altimeter* getAlt();
         // Telemetry* getTrans();
     private:
-        // WE DO NOT NEED POINTER VAIRABLES
-        // THESE SHOULD BE GLOBAL OR PART OF A CLASS THAT IS GLOBAL
-        IMU* imu = NULL;
-        GPS* gps = NULL;
-        Altimeter* alt = NULL;
+        // POINTER VARIABLES - MUST NOT BE DYNAMICALLY ALLOCATED
+        // MUST LOOK INTO NOT USING POINTERS. COPY PASS BY VALUE WILL BE FASTER
+        // CHANGE AFTER EVERYTHING IS IMPLEMENTED
+        IMU *imu;
+        GPS *gps;
+        Altimeter *alt;
+        // IMU imu;
+        // GPS gps;
+        // Altimeter alt;
         // Telemetry trans;
-
-        Apgoee* aps;
+        StorageController *storage;
+        Apgoee *aps;
 };
 
 
