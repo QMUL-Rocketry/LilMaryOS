@@ -33,6 +33,9 @@ void Altimeter::readAllData(){
     Serial.println(" m");
 
     Serial.println();
+    // float temp = bmp.readTemperature();
+    // float pressure = bmp.readPressure();
+    // float alt = bmp.readPressure();
     // DELAYYYYY FIXXXX
-    delay(2000);
+    // delay(2000);
 }
