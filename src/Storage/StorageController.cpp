@@ -5,6 +5,8 @@ StorageController::StorageController(){
     SD.begin();
 }
 
+StorageController::~StorageController(){}
+
 bool StorageController::push(StorageItem* item) {
     
     items.add(item);

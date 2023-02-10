@@ -99,7 +99,6 @@ bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
 
   // check if sensor, i.e. the chip ID is correct
   _sensorID = read8(BMP280_REGISTER_CHIPID);
-  Serial.println(_sensorID);
   if (_sensorID != chipid)
     return false;
 
