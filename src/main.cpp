@@ -52,7 +52,7 @@ void tGPSWrapper();
 void tALTWrapper();
 
 Task tIMU(100, &tIMUWrapper);
-Task tGPS(500, &tGPSWrapper);
+Task tGPS(2000, &tGPSWrapper);
 Task tALT(2000, &tALTWrapper);
 
 // void printtester() {
@@ -81,9 +81,9 @@ void setup()
 
   // MUTEX SCHEDULEERRRRRRRRRRRRRRRRRRRRRRR??
 
-  // sch.add(&tIMU);
+  sch.add(&tIMU);
   sch.add(&tGPS);
-  // sch.add(&tALT);
+  sch.add(&tALT);
   // sch.add(&p);
 
 }

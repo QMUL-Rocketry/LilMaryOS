@@ -1,7 +1,7 @@
-mikalhart/TinyGPSPlus@^1.0.3
-sandeepmistry/LoRa@^0.8.0
-adafruit/Adafruit GPS Library@^1.7.2
-adafruit/Adafruit BNO055@^1.6.1
-SPI
 featherfly/SoftwareSerial@^1.0
 adafruit/Adafruit BMP280 Library@^2.6.6
+adafruit/Adafruit GPS Library@^1.7.2
+sandeepmistry/LoRa@^0.8.0
+adafruit/Adafruit BNO055@^1.6.1
+mikalhart/TinyGPSPlus@^1.0.3
+SPI

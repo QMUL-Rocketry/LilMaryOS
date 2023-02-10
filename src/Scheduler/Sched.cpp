@@ -17,12 +17,9 @@ void Scheduler::add(Task *t) {
 
 void Scheduler::execute() {
     for(int i = 0; i<length; i++) {
-        // Serial.print(i);
-        // delay(100);
         if(tasks[i] == nullptr) {
             break;
         }
         tasks[i]->run();
     }
-    // tasks[0]->run();
 };
