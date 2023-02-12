@@ -40,6 +40,8 @@ private:
     EPROMController eprom;
     // Store any bytes?
     enum eprom_map{};
+
+    void getType(StorageItem *item);
 };
 
 

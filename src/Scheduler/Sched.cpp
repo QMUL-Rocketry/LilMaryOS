@@ -1,14 +1,13 @@
 #include "Scheduler.h"
 
 Scheduler::Scheduler() {
-    // init tasks
     length = 0;
 };
 
 Scheduler::~Scheduler(){};
 
 void Scheduler::add(Task *t) {
-    if (length == 10) {
+    if (length == SCHED_LENGTH) {
         return;
     }
     tasks[length] = t;

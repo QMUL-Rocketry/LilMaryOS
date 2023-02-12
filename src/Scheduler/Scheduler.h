@@ -1,8 +1,12 @@
 #ifndef _SCHEDULER_
 #define _SCHEDULER_
 
+#define SCHED_LENGTH 20
+
 #include "Task.h"
 
+// THE SCHEDULER CAN ONLY TAKE 20 ITEMS MAX, WE CAN CHANGE LATER,
+// THIS SHOULD BE A FIXED SIZE, WE CAN DETERMINE SIZE BEFORE RUNTIME
 // need to juggle execution time of functions with 
 // time intervals
 class Scheduler {
@@ -13,8 +17,8 @@ public:
     void add(Task *t);
 
     void execute();
-
-    Task *tasks[10];
+private:
+    Task *tasks[SCHED_LENGTH];
     int length;
 };
 

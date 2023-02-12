@@ -36,15 +36,10 @@ void blinkingLed() {
   if(isOn) {
     digitalWrite(DEFAULT_LED, HIGH);
     isOn = false;
-  // delay(b);
-
   } else {
     digitalWrite(DEFAULT_LED, LOW);
     isOn = true;
-  // delay(b);
   }
-
-
 }
 
 void tIMUWrapper();
@@ -55,11 +50,6 @@ Task tIMU(100, &tIMUWrapper);
 Task tGPS(2000, &tGPSWrapper);
 Task tALT(2000, &tALTWrapper);
 
-// void printtester() {
-//   Serial.println("Serialllllll");
-// };
-
-// Task p(1000, &printtester);
 
 void setup()
 {

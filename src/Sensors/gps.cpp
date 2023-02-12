@@ -80,7 +80,7 @@ void GPS::viewRead(unsigned long delay) {
         displayInfo();
     }
   }
-    smartDelay(delay);
+    // smartDelay(delay);
     
     // IMPLEMENTATION IS NOT FINISHED
     checkGPSDetected();

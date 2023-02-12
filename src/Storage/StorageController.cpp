@@ -27,6 +27,19 @@ bool StorageController::save(StorageItem* item) {
     return true;
 }
 
+
+void StorageController::getType(StorageItem *item) {
+    switch (item->type)
+    {
+    case SI_Name::Logger:
+        /* code */
+        break;
+    case SI_Name::Camera:
+        break;
+    default:
+        break;
+    }
+}
 // #include <SD.h>
 
 // void init(int chipSelect) {

@@ -1,15 +1,12 @@
 #ifndef STORAGEITEM
 #define STORAGEITEM
 
-enum SI_Name {
-    Logger, Camera
+enum SI_Name {Logger, Camera};
+
+struct StorageItem {
+    char data[80];
+    SI_Name type;
 };
-
-
-class StorageItem {
-
-};
-
 
 
 #endif
