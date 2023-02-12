@@ -6,5 +6,13 @@ static const int BAUD_STANDARD = 9600;
 static const int DEFAULT_LED = 13;
 
 // File
+// static const char LOG_FILE[] = "_log.txt";
+// static const char VIDEO_FILE[] = "_video.mp4";
+
 static const char LOG_FILE[] = "_log.txt";
 static const char VIDEO_FILE[] = "_video.mp4";
+static const char DEFAULT_FILE[] = "def.txt";
+
+// Storage
+
+static const int SDPIN  = 10;

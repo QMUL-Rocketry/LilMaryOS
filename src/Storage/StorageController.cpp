@@ -1,44 +1,79 @@
 #include "StorageController.h"
+#include "time.h"
 
 StorageController::StorageController(){
     items = QueueStorage(30);
     SD.begin();
+    createFileLocation();
 }
 
-StorageController::~StorageController(){}
+StorageController::~StorageController(){
+    delete logger_fl;
+    delete camera_fl;
+}
 
-bool StorageController::push(StorageItem* item) {
+static char* generateTimmeStamp() {
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    return asctime(tm);
+};
+
+void StorageController::createFileLocation() {
+    char* ts = generateTimmeStamp();
+    // logger file name
+    logger_fl = new char[sizeof(LOG_FILE)+sizeof(ts)];
+    strcat(logger_fl, ts);
+    strcat(logger_fl, LOG_FILE);
+    // video file
+    camera_fl = new char[sizeof(VIDEO_FILE)+sizeof(ts)];
+    strcat(camera_fl, ts);
+    strcat(camera_fl, VIDEO_FILE);
+};
+
+void StorageController::push(StorageItem* item) {
     
     items.add(item);
     
-    return true;
 };
 
 // NULL SAFETY CHECKKKKKKKKKKK
-StorageItem* StorageController::pop() {
-    return items.pop();
+bool StorageController::pop() {
+    return save(items.pop());
 }
 
 // PERFORM NULL SAFETY CHECK
 bool StorageController::save(StorageItem* item) {
     if (item == nullptr) {
-        return false;
+        return write(getType(item->type), item->data);
     }
-    return true;
+    return false;
 }
 
 
-void StorageController::getType(StorageItem *item) {
-    switch (item->type)
+char* StorageController::getType(SI_Name type) {
+    switch (type)
     {
     case SI_Name::Logger:
-        /* code */
-        break;
+        return logger_fl;
     case SI_Name::Camera:
-        break;
+        return camera_fl;
     default:
         break;
     }
+     
+    return "def.txt";
+}
+
+// maybe we want to keep opening this file
+// until a new type/different one comes along
+bool StorageController::write(char loc[], char data[]) {
+    File f = SD.open(loc, FILE_WRITE);
+    if (f) {
+        f.println(data);
+        f.close();
+        return true;
+    }
+    return false;
 }
 // #include <SD.h>
 

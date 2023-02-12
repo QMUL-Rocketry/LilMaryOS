@@ -59,6 +59,9 @@ void setup()
   // Set to high for GPS
   Serial.begin(BAUD_HIGH);
 
+  // wait for serial port to connect
+  while (!Serial);
+
   // Serial.begin(3000000);
   sch.add(&tBlinkingLed);
 

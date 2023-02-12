@@ -5,6 +5,7 @@
 #include "Queue.h"
 #include "StorageItem.h"
 #include "EPROM.h"
+#include "globals.h"
 
 // EPROMM handler should maybe be a different file. this should be limited
 
@@ -14,11 +15,11 @@ public:
     ~StorageController();
 
     // Adds the item to the queue in order to be saved later on
-    bool push(StorageItem* item);
+    void push(StorageItem* item);
 
     // Pops the oldest item in the queue and saves it
     // WARNING: NULL SAFETY
-    StorageItem* pop();
+    bool pop();
 
     // Performs an immediate save, bypassing the queue - not the same as a flush
     // WARNING: IMPLEMENT NULL SAFETY CHECK
@@ -41,7 +42,14 @@ private:
     // Store any bytes?
     enum eprom_map{};
 
-    void getType(StorageItem *item);
+    bool write(char loc[], char data[]);
+
+    char* getType(SI_Name type);
+
+    void createFileLocation();
+
+    char* logger_fl;
+    char* camera_fl;
 };
 
 
