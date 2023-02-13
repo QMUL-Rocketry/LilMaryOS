@@ -74,13 +74,13 @@ void GPS::checkGPSDetected(){
 };
 
 void GPS::viewRead(unsigned long delay) {
-
+  Serial.println("GPS");
   while (ss.available() > 0){
     if (gps.encode(ss.read())){
         displayInfo();
     }
   }
-    // smartDelay(delay);
+    smartDelay(delay);
     
     // IMPLEMENTATION IS NOT FINISHED
     checkGPSDetected();

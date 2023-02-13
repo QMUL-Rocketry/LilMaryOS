@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <globals.h>
 #include "State.h"
-#include "Tester/comp_check.cpp"
+// #include "Tester/comp_check.cpp"
 #include <Wire.h>
 #include <SPI.h>
 #include "Scheduler/Scheduler.h"
@@ -35,9 +35,11 @@ bool isOn = true;
 void blinkingLed() {
   if(isOn) {
     digitalWrite(DEFAULT_LED, HIGH);
+    Serial.println("ON");
     isOn = false;
   } else {
     digitalWrite(DEFAULT_LED, LOW);
+    Serial.println("OFF");
     isOn = true;
   }
 }
@@ -46,7 +48,7 @@ void tIMUWrapper();
 void tGPSWrapper();
 void tALTWrapper();
 
-Task tIMU(100, &tIMUWrapper);
+Task tIMU(2000, &tIMUWrapper);
 Task tGPS(2000, &tGPSWrapper);
 Task tALT(2000, &tALTWrapper);
 
@@ -60,24 +62,24 @@ void setup()
   Serial.begin(BAUD_HIGH);
 
   // wait for serial port to connect
-  while (!Serial);
-
-  // Serial.begin(3000000);
+  // while (!Serial);
+  tBlinkingLed.enable();
   sch.add(&tBlinkingLed);
 
-  // delay(5000);
-  delay(1000);
 
   i = s.getIMU();
   g = s.getGPS();
   a = s.getAlt();
 
-  // MUTEX SCHEDULEERRRRRRRRRRRRRRRRRRRRRRR??
+  tIMU.enable();
+  tGPS.enable();
+  tALT.enable();
+
+//   // MUTEX SCHEDULEERRRRRRRRRRRRRRRRRRRRRRR??
 
   sch.add(&tIMU);
   sch.add(&tGPS);
   sch.add(&tALT);
-  // sch.add(&p);
 
 }
 
@@ -102,6 +104,12 @@ void loop()
   // i2cScanner();
   sch.execute();
   // delay(500);
+//   digitalWrite(DEFAULT_LED, HIGH);
+//   delay(100);
+//   digitalWrite(DEFAULT_LED, LOW);
+//   delay(100);
+//   Serial.println("PEINTING");
+//   delay(1000);
 }
 
 void tIMUWrapper() {
