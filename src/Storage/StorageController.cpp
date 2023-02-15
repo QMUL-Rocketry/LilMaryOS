@@ -24,7 +24,7 @@ void StorageController::createFileLocation() {
     logger_fl = new char[sizeof(LOG_FILE)+sizeof(ts)];
     strcat(logger_fl, ts);
     strcat(logger_fl, LOG_FILE);
-    // video file
+    // video file - NOTE WRONG CODE - MUST CHANGE
     camera_fl = new char[sizeof(VIDEO_FILE)+sizeof(ts)];
     strcat(camera_fl, ts);
     strcat(camera_fl, VIDEO_FILE);

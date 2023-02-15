@@ -6,6 +6,7 @@ Scheduler::Scheduler() {
 
 Scheduler::~Scheduler(){};
 
+// need to adjsut for nullptrs
 void Scheduler::add(Task *t) {
     if (length == SCHED_LENGTH) {
         return;
@@ -16,9 +17,16 @@ void Scheduler::add(Task *t) {
 
 void Scheduler::execute() {
     for(int i = 0; i<length; i++) {
+        
         if(tasks[i] == nullptr) {
             break;
         }
-        tasks[i]->run();
+
+        if(!(tasks[i]->checkEnd())){
+            tasks[i]->run();
+        } else {
+            tasks[i] = nullptr;
+        }
+       
     }
 };

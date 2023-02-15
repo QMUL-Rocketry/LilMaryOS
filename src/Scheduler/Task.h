@@ -2,6 +2,7 @@
 #define _TASK_
 
 #include <Arduino.h>
+// #include "Scheduler.h"
 
 // how many time we want to repeat this task,
 // we could add custom limit but not neeed in this scope?
@@ -12,6 +13,9 @@ struct Sched_Timer {
     int iterations;
 };
 
+// CYCLIC DEPENDENCYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+class Scheduler;
+
 class Task {
 public:
 
@@ -19,6 +23,7 @@ public:
 
     Task(unsigned long interval, void (*FuncPtr)());
     Task(repetition r, unsigned long i, void (*FuncPtr)());
+    // Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch);
     Task();
     ~Task();
 
@@ -36,6 +41,8 @@ public:
     // void scheduleEnable();
     // free this task from the scheduler
     void end();
+    // check if this program is meant to be ended from the scheduler
+    bool checkEnd();
 
     // runs the method
     void run();
@@ -59,7 +66,7 @@ private:
     // for scheduler
     bool isEnabled;
     // for scheduler
-    bool isEnd;
+    bool isEnd = false;
     // FOR THE REPETITION ENUM
     u_int8_t rep; 
     // for testing purposes

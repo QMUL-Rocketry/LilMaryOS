@@ -83,6 +83,8 @@ void setup()
 
 }
 
+// set a runtime delay, all threads will have a guaranteed runtime of lets say 1 second
+
 void loop()
 {
   // blinkingLed(b);

@@ -13,6 +13,13 @@ Task::Task(repetition r, unsigned long i, void (*FuncPtr)()) {
     rep = r;
 };
 
+// Task::Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch) {
+//     method = FuncPtr;
+//     interval = i;
+//     rep = r;
+//     sch->add(this);
+// };
+
 Task::Task() {};
 
 Task::~Task(){};
@@ -20,9 +27,10 @@ Task::~Task(){};
 void Task::enable() {isEnabled = true;};
 void Task::disable() {isEnabled = false;};
 void Task::end() {isEnabled = false; isEnd = true;};
+bool Task::checkEnd() {return isEnd;};
 
 void Task::run() {
-    if(isEnabled) {
+    if(isEnabled && !isEnd) {
         unsigned long current = millis();
         if (current - last_executed >= interval) {
             last_executed = current;
