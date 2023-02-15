@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 // #include "Scheduler.h"
+#include "RunMember.h"
 
 // how many time we want to repeat this task,
 // we could add custom limit but not neeed in this scope?
@@ -23,6 +24,7 @@ public:
 
     Task(unsigned long interval, void (*FuncPtr)());
     Task(repetition r, unsigned long i, void (*FuncPtr)());
+    Task(repetition r, unsigned long i, RunMember *member);
     // Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch);
     Task();
     ~Task();
@@ -48,6 +50,11 @@ public:
     void run();
     // mesaures time spent per exectution
     void runWithTime();
+
+    // reuse allows us to use the same task object and replace with another method
+    // this is good to save memory and not use heap if INIT without dynamic memory
+    // primary use will be for the state
+    void reuse(repetition r, unsigned long i, RunMember *member);
 private:
     // the function we want to execute, the task
     FuncPtr method;
