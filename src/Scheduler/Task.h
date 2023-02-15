@@ -54,6 +54,7 @@ public:
     // reuse allows us to use the same task object and replace with another method
     // this is good to save memory and not use heap if INIT without dynamic memory
     // primary use will be for the state
+    // HAS NOT BEEN IMPLENTED YET
     void reuse(repetition r, unsigned long i, RunMember *member);
 private:
     // the function we want to execute, the task

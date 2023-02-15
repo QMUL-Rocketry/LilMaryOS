@@ -34,6 +34,9 @@ public:
         Task *task; // CURRENT PROCESS OF THE STATE MACHINE
     } work;
     // this points to the next state to which we want to transition to
+    // CHANGE RunMember to just be the STATEMACHINE STUFF?
+    // IMPLEMENT IT SIMPLER FIRST WITHOUT USING STATEMACHINE
+    // use the one state class - look at commected implementation
     StateMachine *nextState;    // DONT EDIT - DO NOT CHANGE DEFAULT FUNCTIONALITY
 
 };
