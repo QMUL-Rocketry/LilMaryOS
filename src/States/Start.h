@@ -1,6 +1,7 @@
-#include "../State.h"
+#include "../StateMachine.h"
 
-class Start : public State {
-
+class Start : public StateMachine {
+void calibrateSensors();
+void displayErrorMessage();
 };
 

@@ -14,7 +14,7 @@ struct Sched_Timer {
 };
 
 // CYCLIC DEPENDENCYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-class Scheduler;
+// class Scheduler;
 
 class Task {
 public:

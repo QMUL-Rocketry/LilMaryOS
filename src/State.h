@@ -4,17 +4,19 @@
 #include <Sensors/imu.h>
 #include <Sensors/gps.h>
 #include <Sensors/altimeter.h>
-// #include <Sensors/telemetry.h>
 // #include <Storage/StorageController.h>
-// #include <Apogee/apogee.h>
+#include <Apogee/apogee.h>
 
 class State {
     public:
         State();
         ~State();
 
+        // sets up the state before turning to rin
+        void setup();
+
         // Starts the state and its appropriate actions
-        void start();
+        void run();
 
         // Ends the state 
         void end();
@@ -31,7 +33,6 @@ class State {
         IMU imu;
         GPS gps;
         Altimeter alt;
-        // Telemetry trans;
         // StorageController *storage;
         // Apgoee *aps;
 };

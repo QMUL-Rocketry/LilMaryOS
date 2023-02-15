@@ -11,6 +11,7 @@
         "istream": "cpp",
         "tuple": "cpp",
         "utility": "cpp",
-        "string": "c"
+        "string": "c",
+        "sensorbundle.h": "c"
     }
 }

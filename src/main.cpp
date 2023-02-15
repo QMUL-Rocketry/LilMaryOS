@@ -66,7 +66,6 @@ void setup()
   tBlinkingLed.enable();
   sch.add(&tBlinkingLed);
 
-
   i = s.getIMU();
   g = s.getGPS();
   a = s.getAlt();
@@ -83,35 +82,10 @@ void setup()
 
 }
 
-// set a runtime delay, all threads will have a guaranteed runtime of lets say 1 second
-
+// set a runtime delay?, all threads will have a guaranteed runtime of lets say 1 second?
 void loop()
 {
-  // blinkingLed(b);
-  
-  // BNO / IMU
-  // i->readAllData(true);
-  // delay(500);
-
-  // GPS
-  // CHANGE DELAY FOR GPS READ
-  // NOTE DELAY FOR OTHER TIME SENSITIVE CODE E.G. BLINKS
-  // g->viewRead();
-
-
-  // BMP / Altimeter
-  // a->readAllData();
-  
-  // scan the ports
-  // i2cScanner();
   sch.execute();
-  // delay(500);
-//   digitalWrite(DEFAULT_LED, HIGH);
-//   delay(100);
-//   digitalWrite(DEFAULT_LED, LOW);
-//   delay(100);
-//   Serial.println("PEINTING");
-//   delay(1000);
 }
 
 void tIMUWrapper() {

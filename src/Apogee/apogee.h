@@ -2,8 +2,14 @@
 #define _Apogee_h_
 
 
-class Apgoee {
-
+class Apogee {
+public:
+    Apogee();
+    ~Apogee();
+    
+    // theres meant to be parameters here
+    float calculateHeight(float *matrix);
+private:
 };
 
 

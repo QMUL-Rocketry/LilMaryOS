@@ -1,10 +1,17 @@
+#include "apogee.h"
+
+Apogee::Apogee() {};
+Apogee::~Apogee() {};
+
+float Apogee::calculateHeight(float *matrix){};
+
 // // apogee.cpp : This file contains the 'main' function. Program execution begins and ends there.
 // //
 
-#include <iostream>
-#include <cmath>
-#include <vector>
-#include <fstream>
+// #include <iostream>
+// #include <cmath>
+// #include <vector>
+// #include <fstream>
 // #include <Eigen/Dense>
 // #include <Eigen/Core>
 

@@ -2,7 +2,7 @@
 
 GPS::GPS(){
     ss.begin(GPSBaud);
-    delay(5000); // Remove?
+    delay(1000); // Remove?
 };
 
 GPS::GPS(int RX, int TX){
