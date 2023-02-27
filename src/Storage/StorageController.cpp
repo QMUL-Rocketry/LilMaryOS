@@ -12,6 +12,10 @@ StorageController::~StorageController(){
     delete camera_fl;
 }
 
+void StorageController::run() {
+    save();
+};
+
 static char* generateTimmeStamp() {
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
@@ -30,24 +34,24 @@ void StorageController::createFileLocation() {
     strcat(camera_fl, VIDEO_FILE);
 };
 
-void StorageController::push(StorageItem* item) {
-    
-    items.add(item);
-    
-};
+void StorageController::add(StorageItem* item) { items.add(item); };
 
 // NULL SAFETY CHECKKKKKKKKKKK
-bool StorageController::pop() {
-    return save(items.pop());
-}
+bool StorageController::save() { return forceSave(items.pop()); }
 
 // PERFORM NULL SAFETY CHECK
-bool StorageController::save(StorageItem* item) {
+bool StorageController::forceSave(StorageItem* item) {
     if (item == nullptr) {
         return write(getType(item->type), item->data);
     }
     return false;
 }
+
+void StorageController::flush(){
+    for(int i = 0; i<items.len(); i++){
+        save();
+    }
+};
 
 
 char* StorageController::getType(SI_Name type) {

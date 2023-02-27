@@ -96,26 +96,3 @@ void QueueStorage::resize() {
     arr = temp;
 
 }
-
-// ---------------
-
-// void QueueStorage::add(StorageItem *item) {
-//     arr[addI] = item;
-
-//     addI++;
-//     size++;
-//     // resizes if it goes out of bound
-//     // we don't want to resize if there is still some spaces
-
-//     // checks if there is some space for the external view of the array and are at
-//     // external end
-//     if(addI == length){
-//         // set it back at the beginning
-//         addI = 0;
-//         // if theres no space at the beginning, then resize
-//         if(&arr[addI] != nullptr) {
-//             addI = length;
-//             resize();
-//         }
-//     };
-// }

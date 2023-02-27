@@ -6,24 +6,37 @@
 #include "StorageItem.h"
 #include "EPROM.h"
 #include "globals.h"
+#include "../Scheduler/RunMember.h"
 
 // EPROMM handler should maybe be a different file. this should be limited
 
+// class StorageController : public RunMember {
 class StorageController {
 public:
     StorageController();
     ~StorageController();
 
-    // Adds the item to the queue in order to be saved later on
-    void push(StorageItem* item);
+    // controller logic to save the files, to be attached to the sceduler
+    // need to inherit RunMember
+    void run();
 
+    // Adds the item to the queue in order to be saved later on
+    // void push(StorageItem* item);
+    void add(StorageItem* item);
+    
     // Pops the oldest item in the queue and saves it
     // WARNING: NULL SAFETY
-    bool pop();
+    // bool pop();
+    bool save();
 
     // Performs an immediate save, bypassing the queue - not the same as a flush
     // WARNING: IMPLEMENT NULL SAFETY CHECK
-    bool save(StorageItem* item);
+    // bool save(StorageItem* item);
+    bool forceSave(StorageItem* item);
+
+    // saves all items currently in the queue
+    void flush();
+
 private:
     // how many objects do we want to save per call 
     int rate;
