@@ -33,7 +33,7 @@ public:
     // more like a redirect
     // dependecy tells us if the callback should be tied to the task time interval
     // or be independent from it - independet execution time should be defined by scheduler
-    void setCallback(void (*FuncPtr)());
+    // void setCallback(void (*FuncPtr)());
 
     // turn on task immediately
     void enable();
@@ -54,6 +54,8 @@ public:
     // reuse allows us to use the same task object and replace with another method
     // this is good to save memory and not use heap if INIT without dynamic memory
     // primary use will be for the state
+    // if someone is already using this task with the method version, 
+    // we don't want them to use this function
     // HAS NOT BEEN IMPLENTED YET
     void reuse(repetition r, unsigned long i, RunMember *member);
 private:
@@ -72,7 +74,7 @@ private:
     // we want to exit the function now but want to redirect it to another function to be added to the queue
     // there is no time delay - it will get executed whenever it gets the chance
     // GOOD for I/O, should be dependent to the task time for easy sake? add independent mode?
-    FuncPtr callback;
+    // FuncPtr callback;
 
     // for scheduler
     bool isEnabled;

@@ -16,30 +16,45 @@ void StorageController::run() {
     save();
 };
 
-static char* generateTimmeStamp() {
+static char* generateTimeStamp() {
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
     return asctime(tm);
 };
 
+// static std::string generateTimeStamp() {
+//     time_t timer;
+//     char buffer[50];
+//     struct tm* tm_info;
+
+//     timer = time(NULL);
+//     tm_info = localtime(&timer);
+
+//     strftime(buffer, 50, "%Y-%m-%d-%H:%M:%S", tm_info);
+// //    puts(buffer);
+//     printf("%s", buffer);
+// //    for (int i = 0; i < 50; ++i) {
+// //        std::cout << std::string(buffer) << std::endl;
+// //    }
+//     return std::string(buffer);
+// };
+
 void StorageController::createFileLocation() {
-    char* ts = generateTimmeStamp();
+    char* ts = generateTimeStamp();
     // logger file name
     logger_fl = new char[sizeof(LOG_FILE)+sizeof(ts)];
     strcat(logger_fl, ts);
     strcat(logger_fl, LOG_FILE);
     // video file - NOTE WRONG CODE - MUST CHANGE
-    camera_fl = new char[sizeof(VIDEO_FILE)+sizeof(ts)];
-    strcat(camera_fl, ts);
-    strcat(camera_fl, VIDEO_FILE);
+    // camera_fl = new char[sizeof(VIDEO_FILE)+sizeof(ts)];
+    // strcat(camera_fl, ts);
+    // strcat(camera_fl, VIDEO_FILE);
 };
 
 void StorageController::add(StorageItem* item) { items.add(item); };
 
-// NULL SAFETY CHECKKKKKKKKKKK
 bool StorageController::save() { return forceSave(items.pop()); }
 
-// PERFORM NULL SAFETY CHECK
 bool StorageController::forceSave(StorageItem* item) {
     if (item == nullptr) {
         return write(getType(item->type), item->data);

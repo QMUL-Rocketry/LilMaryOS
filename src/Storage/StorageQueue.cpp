@@ -1,4 +1,4 @@
-#include "Queue.h"
+#include "StorageQueue.h"
 
 // Queue
 
@@ -14,11 +14,6 @@ QueueStorage::QueueStorage(int starting) {
 QueueStorage::~QueueStorage() {
     delete[] arr;
 }
-
-// THIS IS NOT NULL SAFE, MUST BE DELETED/COMMENTED IN PRODUCTIONS
-//StorageItem* Queue::getItem(int i) {
-//    return arr[i];
-//}
 
 // CHECK CODE
 // 52, 56 --> POINTING TO STORAGE ADDRESS. REMOVE &. PROBABLY WOULD WORK.
@@ -41,7 +36,7 @@ void QueueStorage::add(StorageItem *item) {
     arr[addI] = item;
     addI++;
     size++;
-    
+
 }
 
 //int Queue::actualLength() {

@@ -54,6 +54,22 @@ void Task::run() {
     }
 };
 
+void Task::reuse(repetition r, unsigned long i, RunMember *mem) {
+    if (member != nullptr){
+        rep = r;
+        interval = i;
+        member = mem;
+    } else {
+        // THIS IS TO CATCH IN-DEVELOPMENT ERROR
+        // NOT A REALTIME EXCEPTION
+        // IMPLEMENT ERRORRRRRRRRRRRRRR
+    }
+};
+
+// void Task::setCallback(void (*FuncPtr)()) {
+//     callback = FuncPtr;
+// };
+
 void Task::runWithTime() {
     unsigned long cur = millis();
     run();

@@ -4,7 +4,7 @@
 enum SI_Name {Logger, Camera};
 
 struct StorageItem {
-    char data[80];
+    char *data;
     SI_Name type;
 };
 

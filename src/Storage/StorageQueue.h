@@ -1,5 +1,5 @@
-#ifndef _QUEUE_
-#define _QUEUE_
+#ifndef _STR_QUEUE_
+#define _STR_QUEUE_
 
 #include "StorageItem.h"
 
@@ -13,20 +13,11 @@ public:
     // Add to queue
     void add(StorageItem *item);
 
-    // Remove oldest element and save
+    // Remove oldest element
     StorageItem* pop();
 
     // Get size of queue
     int len();
-
-    // Flush everything from queue - save everything
-    // void flush();
-
-    // NOT NULL SAFE, MUST NOT BE USED IN PROD
-    // StorageItem* getItem(int i);
-
-    // int actualLength();
-
 private:
     // init with dynamic array that contains pointers
     StorageItem **arr;
@@ -44,9 +35,6 @@ private:
 
     // NOT IMPLEMENTED
     // bool null_safe();
-
-    // bool save(StorageItem item);
 };
-
 
 #endif
