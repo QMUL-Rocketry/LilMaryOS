@@ -7,6 +7,8 @@ Scheduler::Scheduler() {
 Scheduler::~Scheduler(){};
 
 // need to adjsut for nullptrs
+// must adapt to a queue
+// void Scheduler::add(Task *t) {
 void Scheduler::add(Task *t) {
     if (length == SCHED_LENGTH) {
         return;

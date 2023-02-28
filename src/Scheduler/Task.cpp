@@ -1,24 +1,34 @@
 #include "Task.h"
 
+Task::Task(repetition r, unsigned long i, RunMember *mem) {
+    interval = i;
+    member = mem;
+    rep = r;
+    enable();
+}
+
+// assume it's going to be repeated again and again
+Task::Task(unsigned long i, RunMember *mem) {
+    interval = i;
+    member = mem;
+    rep = repetition::INFINITE;
+    enable();
+}
+
 Task::Task(unsigned long i, void (*FuncPtr)()) {
     method = FuncPtr;
     interval = i;
     // we dont define repetitions as we are gonna assume its gonna run forever unless turned off
-    // rep = repetition::INFINITE;
+    rep = repetition::INFINITE;
+    enable();
 };
 
 Task::Task(repetition r, unsigned long i, void (*FuncPtr)()) {
     method = FuncPtr;
     interval = i;
     rep = r;
+    enable();
 };
-
-// Task::Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch) {
-//     method = FuncPtr;
-//     interval = i;
-//     rep = r;
-//     sch->add(this);
-// };
 
 Task::Task() {};
 
@@ -34,7 +44,12 @@ void Task::run() {
         unsigned long current = millis();
         if (current - last_executed >= interval) {
             last_executed = current;
-            (*method)();
+            if (member != nullptr) {
+                member->run();
+            } else {
+                (*method)();
+            }
+            
         }
     }
 };

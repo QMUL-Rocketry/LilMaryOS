@@ -22,10 +22,10 @@ public:
 
     typedef void (*FuncPtr)();
 
+    Task(unsigned long interval, RunMember *member);
     Task(unsigned long interval, void (*FuncPtr)());
     Task(repetition r, unsigned long i, void (*FuncPtr)());
     Task(repetition r, unsigned long i, RunMember *member);
-    // Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch);
     Task();
     ~Task();
 
@@ -41,7 +41,7 @@ public:
     void disable();
     // // add it to the queue
     // void scheduleEnable();
-    // free this task from the scheduler
+    // free this task from the scheduler by signaling that it needs to end
     void end();
     // check if this program is meant to be ended from the scheduler
     bool checkEnd();
@@ -57,6 +57,9 @@ public:
     // HAS NOT BEEN IMPLENTED YET
     void reuse(repetition r, unsigned long i, RunMember *member);
 private:
+    // run classes - mainly for states
+    RunMember *member;
+    
     // the function we want to execute, the task
     FuncPtr method;
 
