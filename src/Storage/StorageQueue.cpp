@@ -11,7 +11,12 @@ QueueStorage::QueueStorage(int starting) {
 }
 
 // find out how to delete arr dynamic arr - it looks fine
+// NEED TO CHECK THIS CODE
 QueueStorage::~QueueStorage() {
+    for (int i = 0; i<size; i++) {
+        delete arr[i];
+    }
+
     delete[] arr;
 }
 

@@ -16,33 +16,22 @@ void StorageController::run() {
     save();
 };
 
-static char* generateTimeStamp() {
-    time_t t = time(NULL);
-    struct tm *tm = localtime(&t);
-    return asctime(tm);
-};
-
-// static std::string generateTimeStamp() {
-//     time_t timer;
-//     char buffer[50];
-//     struct tm* tm_info;
-
-//     timer = time(NULL);
-//     tm_info = localtime(&timer);
-
-//     strftime(buffer, 50, "%Y-%m-%d-%H:%M:%S", tm_info);
-// //    puts(buffer);
-//     printf("%s", buffer);
-// //    for (int i = 0; i < 50; ++i) {
-// //        std::cout << std::string(buffer) << std::endl;
-// //    }
-//     return std::string(buffer);
-// };
+static char* generateTimeStamp()
+{
+    time_t timer;
+    char* buffer = new char[50];
+    struct tm* tm_info;
+    timer = time(NULL);
+    tm_info = localtime(&timer);
+    strftime(buffer, 50, "%Y-%m-%d-%H:%M:%S", tm_info);
+    return buffer;
+}
 
 void StorageController::createFileLocation() {
     char* ts = generateTimeStamp();
     // logger file name
     logger_fl = new char[sizeof(LOG_FILE)+sizeof(ts)];
+    // strcat(logger_fl, LOG_LOC); // NEED TO ADD LOG LOCATION AND IMPLEMENT THE FOLDER CHECK
     strcat(logger_fl, ts);
     strcat(logger_fl, LOG_FILE);
     // video file - NOTE WRONG CODE - MUST CHANGE
@@ -68,7 +57,6 @@ void StorageController::flush(){
     }
 };
 
-
 char* StorageController::getType(SI_Name type) {
     switch (type)
     {
@@ -81,6 +69,7 @@ char* StorageController::getType(SI_Name type) {
     }
      
     return "def.txt";
+    // return DEF_FILE;
 }
 
 // maybe we want to keep opening this file

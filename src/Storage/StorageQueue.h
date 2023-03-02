@@ -19,6 +19,7 @@ public:
     // Get size of queue
     int len();
 private:
+    // ARRAY OF POINTERS
     // init with dynamic array that contains pointers
     StorageItem **arr;
     // resize if the queue gets to big
