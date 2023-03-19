@@ -16,6 +16,7 @@ public:
     ~Scheduler(); 
 
     void add(Task *t);
+    // void add(RunMember *t);
 
     void execute();
 private:

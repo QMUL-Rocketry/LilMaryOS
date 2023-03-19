@@ -1,8 +1,8 @@
-#ifndef STORAGE
-#define STORAGE
+#ifndef _STORAGE_
+#define _STORAGE_
 
 #include <SD.h>
-#include "Queue.h"
+#include "StorageQueue.h"
 #include "StorageItem.h"
 #include "EPROM.h"
 #include "globals.h"
@@ -10,8 +10,8 @@
 
 // EPROMM handler should maybe be a different file. this should be limited
 
-// class StorageController : public RunMember {
-class StorageController {
+class StorageController : public RunMember {
+// class StorageController {
 public:
     StorageController();
     ~StorageController();

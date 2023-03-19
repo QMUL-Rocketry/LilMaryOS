@@ -22,10 +22,10 @@ public:
 
     typedef void (*FuncPtr)();
 
+    Task(unsigned long interval, RunMember *member);
     Task(unsigned long interval, void (*FuncPtr)());
     Task(repetition r, unsigned long i, void (*FuncPtr)());
     Task(repetition r, unsigned long i, RunMember *member);
-    // Task(repetition r, unsigned long i, void (*FuncPtr)(), Scheduler *sch);
     Task();
     ~Task();
 
@@ -33,7 +33,7 @@ public:
     // more like a redirect
     // dependecy tells us if the callback should be tied to the task time interval
     // or be independent from it - independet execution time should be defined by scheduler
-    void setCallback(void (*FuncPtr)());
+    // void setCallback(void (*FuncPtr)());
 
     // turn on task immediately
     void enable();
@@ -41,7 +41,7 @@ public:
     void disable();
     // // add it to the queue
     // void scheduleEnable();
-    // free this task from the scheduler
+    // free this task from the scheduler by signaling that it needs to end
     void end();
     // check if this program is meant to be ended from the scheduler
     bool checkEnd();
@@ -54,9 +54,14 @@ public:
     // reuse allows us to use the same task object and replace with another method
     // this is good to save memory and not use heap if INIT without dynamic memory
     // primary use will be for the state
+    // if someone is already using this task with the method version, 
+    // we don't want them to use this function
     // HAS NOT BEEN IMPLENTED YET
     void reuse(repetition r, unsigned long i, RunMember *member);
 private:
+    // run classes - mainly for states
+    RunMember *member;
+    
     // the function we want to execute, the task
     FuncPtr method;
 
@@ -69,7 +74,7 @@ private:
     // we want to exit the function now but want to redirect it to another function to be added to the queue
     // there is no time delay - it will get executed whenever it gets the chance
     // GOOD for I/O, should be dependent to the task time for easy sake? add independent mode?
-    FuncPtr callback;
+    // FuncPtr callback;
 
     // for scheduler
     bool isEnabled;

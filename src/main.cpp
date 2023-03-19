@@ -7,6 +7,18 @@
 #include "Scheduler/Scheduler.h"
 #include "Scheduler/Task.h"
 
+// class Trial : public RunMember {
+// public:
+//   void run() {
+//     Serial.println("HEEELLLLOOO");
+//     delay(1000);
+//   }
+// };
+
+// Trial ok;
+
+// Task okok(1000, &ok);
+
 enum blinks {
   PROGRAM_MODE = 1000,
   DEPLOYMENT = 500
@@ -52,7 +64,6 @@ Task tIMU(2000, &tIMUWrapper);
 Task tGPS(2000, &tGPSWrapper);
 Task tALT(2000, &tALTWrapper);
 
-
 void setup()
 {
 
@@ -63,23 +74,17 @@ void setup()
 
   // wait for serial port to connect
   // while (!Serial);
-  tBlinkingLed.enable();
   sch.add(&tBlinkingLed);
 
   i = s.getIMU();
   g = s.getGPS();
   a = s.getAlt();
 
-  tIMU.enable();
-  tGPS.enable();
-  tALT.enable();
-
-//   // MUTEX SCHEDULEERRRRRRRRRRRRRRRRRRRRRRR??
-
+  // MUTEX SCHEDULEERRRRRRRRRRRRRRRRRRRRRRR??
   sch.add(&tIMU);
   sch.add(&tGPS);
   sch.add(&tALT);
-
+  // sch.add(&okok);
 }
 
 // set a runtime delay?, all threads will have a guaranteed runtime of lets say 1 second?
